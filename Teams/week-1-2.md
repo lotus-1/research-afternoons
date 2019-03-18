@@ -2,8 +2,8 @@
 
 Team 1:
 - Aman
-- Sabeel
-- Hoda
+- Sara S.
+- Loreen
 - Nareman
 
 Team 2:
@@ -13,10 +13,10 @@ Team 2:
 
 Team 3:
 - Ahlam
-- Sara S.
-- Loreen
+- Sahar
+- Hoda
 
 Team 4:
 - Maha
-- Sahar
+- Sabeel
 - Sara A.
