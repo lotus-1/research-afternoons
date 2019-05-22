@@ -1,0 +1,112 @@
+HTTP vs HTTPS
+-------------
+Demo how to generate certificates and use them in a node project
+
+**What is _HTTP_ ? How does _HTTP_ works?**
+
+Hypertext Transfer Protocol (HTTP) is an application-layer protocol for transmitting hypermedia documents, such as HTML.
+It was designed for communication between web browsers and web servers.
+HTTP follows a classical client-server model, with a client opening a connection to make a request, then waiting until it receives a response.
+HTTP is a stateless protocol, meaning that the server does not keep any data (state) between two requests.
+
+**What is _HTTPS_ ? How does _HTTPS_ works?**
+
+HTTPS denotes the use of HTTP with SSL (Secure Socket Layer) protocol or its
+successor protocol Transport Layer Security (TLS), a transport-layer protocol. Either of
+these protocols, which use encryption, can be used to create a secure connection
+between two machines. The browser uses SSL or TLS when connecting to a secure part
+of a website indicated by an HTTPS URL, that is, a URL with the prefix https://. The
+browser then uses HTTP to send and receive requests over this secure connection.
+
+**What are _TLS/SSL_ certificates?**
+
+Transport Layer Security (TLS), and its now-deprecated predecessor, Secure Sockets Layer (SSL), are cryptographic protocols designed to provide communications security over a computer network.
+Websites can use TLS to secure all communications between their servers and web browsers
+
+**Why is this important to implement in your projects?**
+
+* Keeps data secure between servers
+* Increases your Google Rankings
+* Builds/Enhances customer trust
+* Improves conversion rates
+
+SSL Certificates need to be issued from a trusted Certificate Authority.
+Browsers, operating systems, and mobile devices maintain list of trusted CA root certificates.
+The Root Certificate must be present on the end user's machine in order for the Certificate to be trusted.
+If it is not trusted the browser will present untrusted error messages to the end user.
+In the case of e-commerce, such error messages result in immediate lack of confidence in the website and organizations risk losing confidence and business from the majority of consumers.
+
+**Demo how to generate _certificates_ and use them in a node project
+**
+
+> Download SSL Certificate Files
+
+```
+
+Start with the process only if you have purchased an SSL certificate and completed the entire order process.
+If you haven’t, you must buy one.
+Once you complete the order process and CA verifies your documents, they send the SSL Certificate files via email that includes SSL Certificate along with Intermediate and Root Certificate and CA bundle Files.
+If the CA Bundle files are missing, you can download it from the Certificate Authority’s official website.
+```
+
+> Create https_server.js file & upload SSL files to Server directory
+
+Create the https_server.js file with any name you want.
+
+
+```
+
+
+#vim https_server.js
+
+
+var https = require('https');
+
+var fs = require('fs');
+
+var https_options = {
+
+  key: fs.readFileSync("/path/to/private.key"),
+
+  cert: fs.readFileSync("/path/to/your_domain_name.crt"),
+
+  ca: [
+
+          fs.readFileSync('path/to/CA_root.crt'),
+
+          fs.readFileSync('path/to/ca_bundle_certificate.crt')
+
+       ]
+};
+
+
+https.createServer(options, function (req, res) {
+
+ res.writeHead(200);
+
+ res.end("Welcome to Node.js HTTPS Servern");
+
+}).listen(8443)
+
+
+Here:
+
+path/to/private.key – the full path of the private key file.
+
+path/to/your_domain_name.crt – the full path of the SSL Certificate file
+
+path/to/CA_root.crt’ – the full path of the CA root certificate file.
+
+path/to/ca_bundle_certificate – the full path of the CA bundle file
+```
+
+> Start Node.js
+
+Apply this command line to start the Node.js application that you have created above.
+
+```
+
+node https_server.js
+```
+
+SSL Certificate is working on Node.js
